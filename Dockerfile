@@ -4,7 +4,7 @@ MAINTAINER Elie <contact [at] eliesauveterre [dot] com>
 
 ENV NODEJS_VERSION=6.9.5 \
 	NPM_VERSION=3.10.10 \
-	ANGULAR_CLI_VERSION=1.1.0 \
+	ANGULAR_CLI_VERSION=1.2.0 \
 	PATH=$PATH:/opt/node/bin
 
 # Install nodejs	& requirements
@@ -32,4 +32,4 @@ RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR "/app"
 
-EXPOSE 8100 35729
+EXPOSE 4200 35729
