@@ -8,7 +8,6 @@ ENV NODEJS_VERSION=6.9.5 \
 	PATH=$PATH:/opt/node/bin
 
 # Install nodejs	& requirements
-
 WORKDIR "/opt/node"
 
 RUN apt-get update && apt-get install -y curl ca-certificates git wget unzip libfontconfig bzip2 \
@@ -22,7 +21,13 @@ RUN	npm i -g --unsafe-perm npm@${NPM_VERSION} @angular/cli@${ANGULAR_CLI_VERSION
 RUN npm install -g typings
 
 # Install Sass
+RUN apt-get install -y ruby-full rubygems ruby-dev libffi-dev
 RUN gem install sass
+
+# Install Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
 
 ### Clean
 RUN apt-get -y autoclean
